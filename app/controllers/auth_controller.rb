@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  skip_before_action :authorize_request, only: [:register, :login]
+  skip_before_action :authorize_request, only: [ :register, :login ]
 
   # POST /register
   def register
@@ -7,9 +7,15 @@ class AuthController < ApplicationController
     if user.save
       token = jwt_encode(user_id: user.id)
       render json: {
-        message: 'User registered successfully',
+        message: "User registered successfully",
         token: token,
-        user: user.slice(:id, :name, :email, :role)
+       user: {
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  role: user.role
+}
+
       }, status: :created
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -22,12 +28,18 @@ class AuthController < ApplicationController
     if user&.authenticate(params[:password])
       token = jwt_encode(user_id: user.id)
       render json: {
-        message: 'Login successful',
+        message: "Login successful",
         token: token,
-        user: user.slice(:id, :name, :email, :role)
+        user: {
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  role: user.role
+}
+
       }, status: :ok
     else
-      render json: { error: 'Invalid email or password' }, status: :unauthorized
+      render json: { error: "Invalid email or password" }, status: :unauthorized
     end
   end
 
@@ -39,6 +51,6 @@ class AuthController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password, :role)
+    params.permit(:first_name, :last_name, :email, :password, :role)
   end
 end
