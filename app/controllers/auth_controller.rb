@@ -9,11 +9,11 @@ class AuthController < ApplicationController
       render json: {
         message: "User registered successfully",
         token: token,
-       user: {
-  id: user.id,
-  name: user.name,
-  email: user.email,
-  role: user.role
+        user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
 }
 
       }, status: :created
@@ -31,10 +31,10 @@ class AuthController < ApplicationController
         message: "Login successful",
         token: token,
         user: {
-  id: user.id,
-  name: user.name,
-  email: user.email,
-  role: user.role
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
 }
 
       }, status: :ok
