@@ -4,13 +4,23 @@ class FeedbacksController < ApplicationController
 
   def index
     feedbacks = @course.feedbacks.includes(:user)
-    render json: feedbacks.to_json(include: :user)
+    render json: feedbacks.as_json(
+      only: [:id, :content, :created_at],
+      include: {
+        user: { only: [:id, :first_name, :last_name, :email, :role] }
+      }
+    )
   end
 
   def create
     feedback = @course.feedbacks.build(feedback_params.merge(user: @current_user))
     if feedback.save
-      render json: feedback, status: :created
+      render json: feedback.as_json(
+        only: [:id, :content, :created_at],
+        include: {
+          user: { only: [:id, :first_name, :last_name, :email, :role] }
+        }
+      ), status: :created
     else
       render json: { errors: feedback.errors.full_messages }, status: :unprocessable_entity
     end
