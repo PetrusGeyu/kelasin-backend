@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   post "/login", to: "auth#login"
 
   get "/me", to: "profiles#show"
-  get "/mycourses", to: "courses#my_courses"   # <= added
+  get "/mycourses", to: "courses#my_courses"
 
   resources :courses do
     resources :lessons
     resources :feedbacks
+    post "enroll", to: "enrollments#create"
+    delete "enroll", to: "enrollments#destroy"
   end
 
-  resources :enrollments, only: [:create, :index, :destroy]
+  resources :enrollments, only: [:index]
   resources :progresses
 end
