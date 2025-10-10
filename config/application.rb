@@ -10,7 +10,7 @@ module KelasinBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
-    config.solid_cable.enabled = false  # ✅ Nonaktifkan SolidCable agar tidak crash di Railway
+   
 
     config.autoload_lib(ignore: %w[assets tasks])
     config.api_only = true
