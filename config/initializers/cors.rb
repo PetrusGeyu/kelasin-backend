@@ -2,7 +2,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   # Allow requests from your client running on http://localhost:3000
   allow do
-    origins 'http://localhost:4000' # 👈 Set this to your frontend's address
+    origins 'https://kelasin.nyaivu.com' # 👈 Set this to your frontend's address
 
     resource '*', # You can narrow this down (e.g., to '/api/*')
       headers: :any,
