@@ -14,5 +14,11 @@ module KelasinBackend
 
     config.autoload_lib(ignore: %w[assets tasks])
     config.api_only = true
+    # Disable Action Cable completely (prevent cable DB connection)
+    config.action_cable.mount_path = nil
+    config.action_cable.url = nil
+    config.action_cable.allowed_request_origins = []
+    config.action_cable.disable_request_forgery_protection = true
+
   end
 end
