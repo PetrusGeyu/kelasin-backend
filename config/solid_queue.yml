@@ -1,8 +1,0 @@
-development:
-  mode: async
-
-test:
-  mode: inline
-
-production:
-  mode: inline

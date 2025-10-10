@@ -91,4 +91,5 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = []
   config.active_job.queue_adapter = :async
 
+
 end
