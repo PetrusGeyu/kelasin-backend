@@ -48,7 +48,7 @@ Untuk menjalankan proyek ini di lingkungan lokal Anda, ikuti langkah-langkah ber
 1.  **Clone repositori ini:**
 
     ```bash
-    git clone https://github.com/nyaivu/kelasin-frontend.git
+    git clone https://github.com/PetrusGeyu/kelasin-backend.git
     ```
 
 
