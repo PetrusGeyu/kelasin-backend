@@ -1,5 +1,3 @@
-Tentu, ini adalah versi README.md yang sudah diperbarui dengan informasi fitur dan domain yang Anda berikan.
-
 -----
 
 # Kelas.in - Backend
