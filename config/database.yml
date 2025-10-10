@@ -19,9 +19,6 @@ production:
       primary:
         <<: *default
         database: kelasin_backend
-      cache:
-        <<: *default
-        database: kelasin_cache
       cable:
         <<: *default
         database: kelasin_cable

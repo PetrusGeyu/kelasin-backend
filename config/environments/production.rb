@@ -18,7 +18,7 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # ✅ Use simple in-memory cache & async queue instead of SolidQueue
-  config.cache_store = :memory_store
+  config.cache_store = :null_store
   config.active_job.queue_adapter = :async
 
   # ✅ Disable Action Cable to prevent DB cable errors in production
