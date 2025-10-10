@@ -6,13 +6,14 @@ default: &default
 
 development:
   <<: *default
-  database: kelasin_backend
+  database: kelasin_backend_dev
 
 test:
   <<: *default
-  database: kelasin_backend
+  database: kelasin_backend_test
 
 production:
+  <<: *default
   connects_to:
     database:
       primary:
