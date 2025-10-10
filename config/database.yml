@@ -6,13 +6,21 @@ default: &default
 
 development:
   <<: *default
+  database: kelasin_dev
 
 test:
   <<: *default
+  database: kelasin_test
 
 production:
-  <<: *default
-  primary:
-    <<: *default
-  cable:
-    <<: *default
+  connects_to:
+    database:
+      primary:
+        <<: *default
+        database: kelasin_prod
+      cache:
+        <<: *default
+        database: kelasin_cache
+      cable:
+        <<: *default
+        database: kelasin_cable
