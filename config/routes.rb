@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   resources :enrollments, only: [:index]
   resources :progresses
+
+  # ✅ Tambahkan ini di paling bawah:
+  get "/", to: proc { [200, {}, ['Kelasin API is running']] }
 end
