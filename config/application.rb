@@ -19,6 +19,7 @@ module KelasinBackend
     config.action_cable.url = nil
     config.action_cable.allowed_request_origins = []
     config.action_cable.disable_request_forgery_protection = true
+    config.active_job.queue_adapter = :async
 
   end
 end
