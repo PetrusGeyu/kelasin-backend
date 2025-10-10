@@ -2,21 +2,13 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
 
 development:
   <<: *default
-  database: kelasin_backend_development
-  username: petrus
-  password: petrus
-  socket: /var/run/mysqld/mysqld.sock
 
 test:
   <<: *default
-  database: kelasin_backend_test
-  username: petrus
-  password: petrus
-  socket: /var/run/mysqld/mysqld.sock
 
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
