@@ -12,5 +12,7 @@ test:
 
 production:
   <<: *default
+  primary:
+    <<: *default
   cable:
     <<: *default
