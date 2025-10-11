@@ -1,68 +1,71 @@
-# 📚 Kelasin Backend
+# 📚 zerona Backend
 
-Backend API untuk aplikasi **Kelasin** — sebuah platform pembelajaran daring (e-learning) yang mengelola pengguna, kursus, pelajaran, umpan balik, serta pendaftaran siswa pada kursus.
+Backend API untuk aplikasi **zerona** — sebuah platform pembelajaran daring (e-learning) yang mengelola pengguna, kursus, pelajaran, umpan balik, serta pendaftaran siswa pada kursus.
 
 ---
 
 ## 🧩 Teknologi yang Digunakan
 
-- **Ruby** 3.3.0  
-- **Ruby on Rails** 8.0.3  
-- **MySQL** (melalui `mysql2` adapter)  
-- **Puma** sebagai server aplikasi  
-- **JSON API** (tanpa tampilan HTML)  
-- **Supabase / Railway** untuk deployment dan database hosting  
+- **Ruby** 3.3.0
+- **Ruby on Rails** 8.0.3
+- **MySQL** (melalui `mysql2` adapter)
+- **Puma** sebagai server aplikasi
+- **JSON API** (tanpa tampilan HTML)
+- **Supabase / Railway** untuk deployment dan database hosting
 
 ---
 
 ## ⚙️ Fitur Utama
 
-- 🔐 Registrasi & Login pengguna (`/register`, `/login`)  
-- 👤 Melihat profil pengguna (`/me`)  
-- 🎓 CRUD Kursus (`/courses`)  
-- 📚 Manajemen pelajaran per kursus (`/courses/:id/lessons`)  
-- 💬 Feedback dan ulasan kursus (`/courses/:id/feedbacks`)  
-- 📝 Enroll dan unenroll kursus (`/courses/:id/enroll`)  
-- 🎯 Melihat daftar kursus yang diikuti (`/mycourses`)  
-- 🚀 Endpoint root untuk memastikan server aktif (`GET /`)  
+- 🔐 Registrasi & Login pengguna (`/register`, `/login`)
+- 👤 Melihat profil pengguna (`/me`)
+- 🎓 CRUD Kursus (`/courses`)
+- 📚 Manajemen pelajaran per kursus (`/courses/:id/lessons`)
+- 💬 Feedback dan ulasan kursus (`/courses/:id/feedbacks`)
+- 📝 Enroll dan unenroll kursus (`/courses/:id/enroll`)
+- 🎯 Melihat daftar kursus yang diikuti (`/mycourses`)
+- 🚀 Endpoint root untuk memastikan server aktif (`GET /`)
 
 ---
 
 ## 🗂️ Struktur API (Routes)
 
-| Metode | Endpoint | Deskripsi |
-|--------|-----------|-----------|
-| POST | `/register` | Daftar akun baru |
-| POST | `/login` | Login pengguna |
-| GET | `/me` | Tampilkan profil pengguna |
-| GET | `/mycourses` | Kursus yang diikuti pengguna |
-| GET | `/courses` | Daftar semua kursus |
-| POST | `/courses` | Tambah kursus baru |
-| PUT/PATCH | `/courses/:id` | Ubah data kursus |
-| DELETE | `/courses/:id` | Hapus kursus |
-| POST | `/courses/:id/enroll` | Daftar ke kursus |
-| DELETE | `/courses/:id/enroll` | Batalkan pendaftaran kursus |
-| GET/POST/PUT/DELETE | `/courses/:id/lessons` | CRUD pelajaran dalam kursus |
-| GET/POST/PUT/DELETE | `/courses/:id/feedbacks` | CRUD feedback kursus |
-| GET | `/enrollments` | Daftar semua enrollments |
-| CRUD | `/progresses` | Kemajuan belajar siswa |
+| Metode              | Endpoint                 | Deskripsi                    |
+| ------------------- | ------------------------ | ---------------------------- |
+| POST                | `/register`              | Daftar akun baru             |
+| POST                | `/login`                 | Login pengguna               |
+| GET                 | `/me`                    | Tampilkan profil pengguna    |
+| GET                 | `/mycourses`             | Kursus yang diikuti pengguna |
+| GET                 | `/courses`               | Daftar semua kursus          |
+| POST                | `/courses`               | Tambah kursus baru           |
+| PUT/PATCH           | `/courses/:id`           | Ubah data kursus             |
+| DELETE              | `/courses/:id`           | Hapus kursus                 |
+| POST                | `/courses/:id/enroll`    | Daftar ke kursus             |
+| DELETE              | `/courses/:id/enroll`    | Batalkan pendaftaran kursus  |
+| GET/POST/PUT/DELETE | `/courses/:id/lessons`   | CRUD pelajaran dalam kursus  |
+| GET/POST/PUT/DELETE | `/courses/:id/feedbacks` | CRUD feedback kursus         |
+| GET                 | `/enrollments`           | Daftar semua enrollments     |
+| CRUD                | `/progresses`            | Kemajuan belajar siswa       |
 
 ---
 
 ## 🧰 Instalasi & Konfigurasi Lokal
 
 1. **Clone repository**
+
    ```bash
-   git clone https://github.com/PetrusGeyu/kelasin-backend.git
-   cd kelasin-backend
+   git clone https://github.com/PetrusGeyu/zerona-backend.git
+   cd zerona-backend
    ```
 
 2. **Install dependencies**
+
    ```bash
    bundle install
    ```
 
 3. **Buat file `.env`**
+
    ```env
    DATABASE_URL=mysql2://user:password@host:port/db_name
    SECRET_KEY_BASE=<hasil dari rails secret>
@@ -70,12 +73,14 @@ Backend API untuk aplikasi **Kelasin** — sebuah platform pembelajaran daring (
    ```
 
 4. **Setup database**
+
    ```bash
    rails db:create
    rails db:migrate
    ```
 
 5. **Jalankan server**
+
    ```bash
    rails server -p 3000
    ```
@@ -89,16 +94,18 @@ Backend API untuk aplikasi **Kelasin** — sebuah platform pembelajaran daring (
 ## 🚀 Deploy ke Railway
 
 ### 1️⃣ Persiapan
+
 Pastikan variabel berikut sudah diset di Railway:
 
-| Nama | Deskripsi |
-|------|------------|
-| `DATABASE_URL` | URL koneksi MySQL |
+| Nama              | Deskripsi                 |
+| ----------------- | ------------------------- |
+| `DATABASE_URL`    | URL koneksi MySQL         |
 | `SECRET_KEY_BASE` | Hasil dari `rails secret` |
-| `PORT` | Set ke `8080` |
-| `RAILS_ENV` | `production` |
+| `PORT`            | Set ke `8080`             |
+| `RAILS_ENV`       | `production`              |
 
 ### 2️⃣ Konfigurasi penting
+
 - Pastikan di `puma.rb` ada baris:
   ```ruby
   port ENV.fetch("PORT") { 8080 }
@@ -112,8 +119,10 @@ Pastikan variabel berikut sudah diset di Railway:
   ```
 
 ### 3️⃣ Deploy
+
 Push ke GitHub, lalu Railway akan otomatis build & deploy.  
 Jika berhasil, log akan menampilkan:
+
 ```
 Listening on http://0.0.0.0:8080
 ```
@@ -139,8 +148,8 @@ config/
 
 ## ✅ Catatan Tambahan
 
-- **Action Cable**, **Solid Queue**, dan **Solid Cache** dinonaktifkan di production untuk mencegah error koneksi database (`cache` / `cable`).  
-- Gunakan endpoint `/` untuk health check Railway.  
+- **Action Cable**, **Solid Queue**, dan **Solid Cache** dinonaktifkan di production untuk mencegah error koneksi database (`cache` / `cable`).
+- Gunakan endpoint `/` untuk health check Railway.
 - Semua response dalam format **JSON**.
 
 ---
