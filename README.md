@@ -1,6 +1,6 @@
-# 📚 zerona Backend
+# 📚 Zerona Backend
 
-Backend API untuk aplikasi **zerona** — sebuah platform pembelajaran daring (e-learning) yang mengelola pengguna, kursus, pelajaran, umpan balik, serta pendaftaran siswa pada kursus.
+Backend API untuk aplikasi **Zerona** — sebuah platform pembelajaran daring (e-learning) yang mengelola pengguna, kursus, pelajaran, umpan balik, serta pendaftaran siswa pada kursus.
 
 ---
 
