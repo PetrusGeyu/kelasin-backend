@@ -10,7 +10,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # === Tambahkan di sini (di luar group development/test) ===
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.21"
 gem "jwt"
 gem "rack-cors", require: "rack/cors"
 gem "dotenv-rails"
